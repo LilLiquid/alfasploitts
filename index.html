@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bezur Z</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: url('https://cdn.discordapp.com/attachments/1317943491820519476/1320885097150419034/stars-star.gif') no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            font-size: 1.5rem;
+            animation: fadeIn 3s ease-in-out;
+        }
+
+        ul li {
+            margin: 10px 0;
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            color: #000;
+            background-color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            animation: fadeIn 4s ease-in-out;
+            transition: transform 0.3s ease;
+        }
+
+        .btn:hover {
+            transform: scale(1.1);
+        }
+
+        .footer {
+            margin-top: 20px;
+            font-size: 1rem;
+            color: #aaa;
+            animation: fadeIn 5s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .animate-text {
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="animate-text">Bezur Z</h1>
+        <ul>
+            <li>Advanced UI</li>
+            <li>93% unc & lvl 7</li>
+            <li>Free 100%</li>
+            <li>Always up!</li>
+            <li>Fast updates and reliable support</li>
+            <li>Enhanced security and performance</li>
+        </ul>
+        <a href="https://discord.com" class="btn">Join on Discord</a>
+        <div class="footer">Bezur Z is the ultimate executor after Byfron.</div>
+    </div>
+</body>
+</html>
