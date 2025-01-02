@@ -12,14 +12,14 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background: rgba(255, 255, 255, 0.39); /* RGBA for white with 100 alpha */
+            background: rgba(255, 255, 255, 0.39);
             color: #000;
             font-family: Arial, sans-serif;
             overflow: hidden;
-            position: relative; /* For positioning the falling images */
+            position: relative;
         }
 
-        /* Container for falling images */
+        /* Tło z obrazkami */
         #falling-images-container {
             position: absolute;
             top: 0;
@@ -27,31 +27,30 @@
             width: 100%;
             height: 100%;
             overflow: hidden;
-            z-index: -1; /* Keep falling images behind other elements */
+            z-index: -1;
         }
 
         .falling-image {
             position: absolute;
             top: -100px;
-            width: 50px; /* Ensure falling images are appropriately sized */
+            width: 50px;
             height: auto;
             animation: fall 10s linear infinite;
             opacity: 0.8;
         }
 
-        /* Falling animation */
         @keyframes fall {
             0% {
                 transform: translateY(0);
             }
             100% {
-                transform: translateY(100vh); /* Move the image to the bottom of the screen */
+                transform: translateY(100vh);
             }
         }
 
         .container {
             text-align: center;
-            z-index: 1; /* Ensure content stays on top */
+            z-index: 1;
         }
 
         h1 {
@@ -82,7 +81,11 @@
             border-radius: 5px;
             cursor: pointer;
             text-decoration: none;
+            animation: fadeIn 4s ease-in-out;
             transition: transform 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .btn:hover {
@@ -93,8 +96,19 @@
             margin-top: 20px;
             font-size: 1rem;
             color: #333;
+            animation: fadeIn 5s ease-in-out;
         }
 
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Stylizacja przycisków w prawym górnym rogu */
         .top-buttons {
             position: absolute;
             top: 10px;
@@ -118,21 +132,52 @@
         .top-buttons a:hover {
             transform: scale(1.1);
         }
+
+        .logo {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            width: 50px;
+            height: auto;
+        }
     </style>
 </head>
 <body>
+    <!-- Tło z obrazkami -->
     <div id="falling-images-container"></div>
 
+    <!-- Przycisk w prawym górnym rogu -->
+    <div class="top-buttons">
+        <a href="https://discord.com" class="btn">
+            <img src="https://cdn.discordapp.com/attachments/1317943491820519476/1324440257411809421/discord-white-icon.webp" alt="Discord Logo">
+            Discord
+        </a>
+        <a href="https://youtube.com" class="btn">
+            <img src="https://media.discordapp.net/attachments/1317943491820519476/1324454279469076572/youtube-app-white-icon.webp" alt="YouTube Logo">
+            YouTube
+        </a>
+    </div>
+
+    <img src="https://cdn.discordapp.com/attachments/1317943491820519476/1324441171724075069/freepik__modern-style-detailled-illustration-a-young-white-__51602.jpeg" alt="Logo" class="logo">
     <div class="container">
-        <h1>Alfasploit</h1>
+        <h1 class="animate-text">Alfasploit</h1>
         <ul>
             <li>93% unc & lvl 7</li>
             <li>Always working! auto updates</li>
             <li>Enhanced security and performance</li>
         </ul>
+        <div class="status down">
+            Status: Down :(( 
+        </div>
         <div class="btn-container">
-            <a href="https://discord.com" class="btn">Join on Discord</a>
-            <a href="https://alfasploit.netlify.app/download" class="btn">Download</a>
+            <a href="https://discord.com" class="btn">
+                <img src="https://cdn.discordapp.com/attachments/1317943491820519476/1324440257411809421/discord-white-icon.webp" alt="Discord Logo">
+                Join on Discord
+            </a>
+            <a href="https://alfasploit.netlify.app/download" class="btn">
+                <img src="https://cdn.discordapp.com/attachments/1317943491820519476/1324440548102111353/download_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24_1.png" alt="Download Icon">
+                Download
+            </a>
         </div>
         <div class="footer">Are you bored of playing fair? Install Alfasploit!</div>
     </div>
@@ -140,17 +185,16 @@
     <script>
         function generateFallingImages(num) {
             const container = document.getElementById('falling-images-container');
-            const imageUrl = "https://media.discordapp.net/attachments/1317943491820519476/1324488986441289778/png-clipart-candy-cane-ribbon-candy-taffy-cartoon-s-of-candy-food-cartoon-removebg-preview.png?ex=677855fe&is=6777047e&hm=7abc312322d506d8dcca9e6d106366b66a9a79e434853a43a75b3889a6161bd1";
+            const imageUrl = "https://media.discordapp.net/attachments/1317943491820519476/1324488986441289778/png-clipart-candy-cane-ribbon-candy-taffy-cartoon-s-of-candy-food-cartoon-removebg-preview.png";
 
             for (let i = 0; i < num; i++) {
                 const img = document.createElement('img');
                 img.src = imageUrl;
                 img.classList.add('falling-image');
 
-                // Randomize the position, animation duration, and delay for each image
-                const randomLeft = Math.random() * 100; // Random left position (percentage)
-                const randomDuration = Math.random() * (15 - 8) + 8; // Duration between 8s and 15s
-                const randomDelay = Math.random() * 10; // Random delay up to 10s
+                const randomLeft = Math.random() * 100;
+                const randomDuration = Math.random() * (15 - 8) + 8;
+                const randomDelay = Math.random() * 10;
 
                 img.style.left = `${randomLeft}%`;
                 img.style.animationDuration = `${randomDuration}s`;
@@ -160,7 +204,6 @@
             }
         }
 
-        // Generate 50 falling images
         generateFallingImages(50);
     </script>
 </body>
