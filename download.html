@@ -19,56 +19,48 @@
             position: relative;
         }
 
-        /* Śnieg w tle */
-        .snowflake {
-            position: absolute;
-            top: -50px;
-            width: 50px;
-            height: 50px;
-            background-size: contain;
-            background-image: url('https://media.discordapp.net/attachments/1317943491820519476/1324488986441289778/png-clipart-candy-cane-ribbon-candy-taffy-cartoon-s-of-candy-food-cartoon-removebg-preview.png?ex=677855fe&is=6777047e&hm=7abc312322d506d8dcca9e6d106366b66a9a79e434853a43a75b3889a6161bd1&=&format=webp&quality=lossless&width=662&height=588');
-            animation: fall 10s infinite linear;
-            opacity: 0.8;
-        }
-
-        /* Animacja spadania */
-        @keyframes fall {
-            0% {
-                transform: translateY(0) rotate(0deg);
-            }
-            100% {
-                transform: translateY(100vh) rotate(360deg);
-            }
-        }
-
-        /* Tworzenie 50 spadających płatków */
-        .snowflakes {
+        .background-container {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             pointer-events: none;
+            overflow: hidden;
+            z-index: -1;
         }
 
-        /* Początkowe ustawienie i losowe pozycje */
-        .snowflake:nth-child(odd) {
-            animation-duration: 12s;
-            animation-delay: -2s;
+        .falling-image {
+            position: absolute;
+            width: 50px;
+            height: auto;
+            animation: fall 10s linear infinite, sway 3s ease-in-out infinite;
+            opacity: 0.7;
         }
 
-        .snowflake:nth-child(even) {
-            animation-duration: 14s;
-            animation-delay: -5s;
+        @keyframes fall {
+            0% {
+                top: -10%;
+                opacity: 0.5;
+            }
+            100% {
+                top: 110%;
+                opacity: 0.2;
+            }
         }
 
-        body {
-            position: relative;
+        @keyframes sway {
+            0%, 100% {
+                transform: translateX(0);
+            }
+            50% {
+                transform: translateX(20px);
+            }
         }
 
         .container {
             text-align: center;
-            background-color: #000; /* Czarny tło */
+            background-color: #000;
             color: #fff;
             padding: 20px;
             border-radius: 20px;
@@ -169,62 +161,24 @@
     </style>
 </head>
 <body>
+    <div class="background-container">
+        <script>
+            const container = document.querySelector('.background-container');
+            const imageUrl = "https://media.discordapp.net/attachments/1317943491820519476/1324488986441289778/png-clipart-candy-cane-ribbon-candy-taffy-cartoon-s-of-candy-food-cartoon-removebg-preview.png?ex=677855fe&is=6777047e&hm=7abc312322d506d8dcca9e6d106366b66a9a79e434853a43a75b3889a6161bd1&=&format=webp&quality=lossless&width=662&height=588";
+
+            for (let i = 0; i < 50; i++) {
+                const img = document.createElement('img');
+                img.src = imageUrl;
+                img.classList.add('falling-image');
+                img.style.left = Math.random() * 100 + 'vw';
+                img.style.animationDelay = Math.random() * 10 + 's';
+                img.style.animationDuration = 5 + Math.random() * 5 + 's';
+                container.appendChild(img);
+            }
+        </script>
+    </div>
     <a href="https://alfasploit.netlify.app/" class="back-btn">Back</a>
     <img src="https://cdn.discordapp.com/attachments/1317943491820519476/1324441171724075069/freepik__modern-style-detailled-illustration-a-young-white-__51602.jpeg?ex=67782976&is=6776d7f6&hm=916a41dd8aeafd2668d0a15d83ea6aa99ca02f3b2c0ea8a2e1a9b0513098f47c&" alt="Logo" class="logo">
-    <div class="snowflakes">
-        <!-- Dodajemy 50 spadających zdjęć -->
-        <div class="snowflake"></div>
-        <div class="snowflake"></div>
-        <div class="snowflake"></div>
-        <div class="snowflake"></div>
-        <div class="snowflake"></div>
-        <div class="snowflake"></div>
-        <div class="snowflake"></div>
-        <div class="snowflake"></div>
-        <div class="snowflake"></div>
-        <div class="snowflake"></div>
-        <div class="snowflake"></div>
-        <div class="snowflake"></div>
-        <div class="snowflake"></div>
-        <div class="snowflake"></div>
-        <div class="snowflake"></div>
-        <div class="snowflake"></div>
-        <div class="snowflake"></div>
-        <div class="snowflake"></div>
-        <div class="snowflake"></div>
-        <div class="snowflake"></div>
-        <div class="snowflake"></div>
-        <div class="snowflake"></div>
-        <div class="snowflake"></div>
-        <div class="snowflake"></div>
-        <div class="snowflake"></div>
-        <div class="snowflake"></div>
-        <div class="snowflake"></div>
-        <div class="snowflake"></div>
-        <div class="snowflake"></div>
-        <div class="snowflake"></div>
-        <div class="snowflake"></div>
-        <div class="snowflake"></div>
-        <div class="snowflake"></div>
-        <div class="snowflake"></div>
-        <div class="snowflake"></div>
-        <div class="snowflake"></div>
-        <div class="snowflake"></div>
-        <div class="snowflake"></div>
-        <div class="snowflake"></div>
-        <div class="snowflake"></div>
-        <div class="snowflake"></div>
-        <div class="snowflake"></div>
-        <div class="snowflake"></div>
-        <div class="snowflake"></div>
-        <div class="snowflake"></div>
-        <div class="snowflake"></div>
-        <div class="snowflake"></div>
-        <div class="snowflake"></div>
-        <div class="snowflake"></div>
-        <div class="snowflake"></div>
-        <div class="snowflake"></div>
-    </div>
     <div class="container">
         <h2 class="gray-text">Size: X MB | Uploaded: YYYY-MM-DD</h2>
         <h1>AlfaSploit 1.1v</h1>
