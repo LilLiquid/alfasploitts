@@ -40,11 +40,15 @@
             margin-bottom: 20px;
         }
 
-        /* Nowy szary tekst nad białym */
+        /* Szary tekst nad kontenerem */
         .gray-text {
             color: rgba(169, 169, 169, 0.7); /* Szary tekst z mniejszą przezroczystością */
             font-size: 1.2rem;
             margin-bottom: 10px;
+            position: absolute;
+            top: 20px;
+            text-align: center;
+            width: 100%;
         }
 
         .info {
@@ -128,9 +132,11 @@
 <body>
     <a href="https://alfasploit.netlify.app/" class="back-btn">Back</a>
     <img src="https://cdn.discordapp.com/attachments/1317943491820519476/1324441171724075069/freepik__modern-style-detailled-illustration-a-young-white-__51602.jpeg?ex=67782976&is=6776d7f6&hm=916a41dd8aeafd2668d0a15d83ea6aa99ca02f3b2c0ea8a2e1a9b0513098f47c&" alt="Logo" class="logo">
+    
+    <!-- Szary tekst nad kontenerem -->
+    <h2 class="gray-text">Size: X MB | Uploaded: YYYY-MM-DD</h2>
+
     <div class="container">
-        <!-- Szary tekst z informacjami -->
-        <h2 class="gray-text">Size: X MB | Uploaded: YYYY-MM-DD</h2>
         <h1>AlfaSploit 1.1v</h1>
         <div class="info">
             <p><strong>Unc:</strong> 93</p>
