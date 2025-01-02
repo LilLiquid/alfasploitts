@@ -16,6 +16,7 @@
             color: #000;
             font-family: Arial, sans-serif;
             overflow: hidden;
+            position: relative; /* To position buttons at the top-right corner */
         }
 
         .container {
@@ -125,10 +126,51 @@
         .status.working {
             color: green;  /* Green color for Working status */
         }
+
+        /* Positioning the buttons in the top-right corner */
+        .top-buttons {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .top-buttons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            background-color: #000;
+            padding: 10px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 1.2rem;
+        }
+
+        .top-buttons a:hover {
+            transform: scale(1.1);
+        }
+
     </style>
 </head>
 <body>
     <img src="https://cdn.discordapp.com/attachments/1317943491820519476/1324441171724075069/freepik__modern-style-detailled-illustration-a-young-white-__51602.jpeg?ex=67782976&is=6776d7f6&hm=916a41dd8aeafd2668d0a15d83ea6aa99ca02f3b2c0ea8a2e1a9b0513098f47c&" alt="Logo" class="logo">
+    
+    <div class="top-buttons">
+        <!-- Discord Button -->
+        <a href="https://discord.com" class="btn">
+            <img src="https://cdn.discordapp.com/attachments/1317943491820519476/1324440257411809421/discord-white-icon.webp?ex=6778289c&is=6776d71c&hm=9b0f9ae7a9bc49f20a2bd47a91d51b8d98020cc89faecfbb29a2610093071114&" alt="Discord Logo">
+            Discord
+        </a>
+        <!-- YouTube Button -->
+        <a href="https://youtube.com" class="btn">
+            <img src="https://media.discordapp.net/attachments/1317943491820519476/1324454279469076572/youtube-app-white-icon.webp?ex=677835ab&is=6776e42b&hm=d397b7d126b7f2af4ef2b122c837cfc117e975797ccdc2c71057ffd0d37be999&=&format=webp&width=640&height=640" alt="YouTube Logo">
+            YouTube
+        </a>
+    </div>
+
     <div class="container">
         <h1 class="animate-text">Alfasploit</h1>
         <ul>
@@ -142,16 +184,6 @@
         </div>
         <div class="status working">
 
-        </div>
-        <div class="btn-container">
-            <a href="https://discord.com" class="btn">
-                <img src="https://cdn.discordapp.com/attachments/1317943491820519476/1324440257411809421/discord-white-icon.webp?ex=6778289c&is=6776d71c&hm=9b0f9ae7a9bc49f20a2bd47a91d51b8d98020cc89faecfbb29a2610093071114&" alt="Discord Logo">
-                Join on Discord
-            </a>
-            <a href="https://alfasploit.netlify.app/download" class="btn">
-                <img src="https://cdn.discordapp.com/attachments/1317943491820519476/1324440548102111353/download_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24_1.png?ex=677828e1&is=6776d761&hm=b5f5dfbcce74447129adf7df4096acc3376899494d697ea3c6d6b09924a60f9f&" alt="Download Icon">
-                Download
-            </a>
         </div>
         <div class="footer">Are you bored of playing fair? install alfasploit!.</div>
     </div>
