@@ -19,6 +19,53 @@
             position: relative;
         }
 
+        /* Śnieg w tle */
+        .snowflake {
+            position: absolute;
+            top: -50px;
+            width: 50px;
+            height: 50px;
+            background-size: contain;
+            background-image: url('https://media.discordapp.net/attachments/1317943491820519476/1324488986441289778/png-clipart-candy-cane-ribbon-candy-taffy-cartoon-s-of-candy-food-cartoon-removebg-preview.png?ex=677855fe&is=6777047e&hm=7abc312322d506d8dcca9e6d106366b66a9a79e434853a43a75b3889a6161bd1&=&format=webp&quality=lossless&width=662&height=588');
+            animation: fall 10s infinite linear;
+            opacity: 0.8;
+        }
+
+        /* Animacja spadania */
+        @keyframes fall {
+            0% {
+                transform: translateY(0) rotate(0deg);
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+            }
+        }
+
+        /* Tworzenie 50 spadających płatków */
+        .snowflakes {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        /* Początkowe ustawienie i losowe pozycje */
+        .snowflake:nth-child(odd) {
+            animation-duration: 12s;
+            animation-delay: -2s;
+        }
+
+        .snowflake:nth-child(even) {
+            animation-duration: 14s;
+            animation-delay: -5s;
+        }
+
+        body {
+            position: relative;
+        }
+
         .container {
             text-align: center;
             background-color: #000; /* Czarny tło */
@@ -40,9 +87,8 @@
             margin-bottom: 20px;
         }
 
-        /* Szary tekst nad białym */
         .gray-text {
-            color: rgba(169, 169, 169, 0.7); /* Szary tekst z mniejszą przezroczystością */
+            color: rgba(169, 169, 169, 0.7);
             font-size: 1.2rem;
             margin-bottom: 10px;
         }
@@ -91,7 +137,6 @@
             margin-right: 10px;
         }
 
-        /* Definicja animacji pulsowania */
         @keyframes pulse {
             0% {
                 transform: scale(1);
@@ -104,7 +149,6 @@
             }
         }
 
-        /* Styl przycisku "Back" */
         .back-btn {
             position: absolute;
             top: 10px;
@@ -127,8 +171,61 @@
 <body>
     <a href="https://alfasploit.netlify.app/" class="back-btn">Back</a>
     <img src="https://cdn.discordapp.com/attachments/1317943491820519476/1324441171724075069/freepik__modern-style-detailled-illustration-a-young-white-__51602.jpeg?ex=67782976&is=6776d7f6&hm=916a41dd8aeafd2668d0a15d83ea6aa99ca02f3b2c0ea8a2e1a9b0513098f47c&" alt="Logo" class="logo">
+    <div class="snowflakes">
+        <!-- Dodajemy 50 spadających zdjęć -->
+        <div class="snowflake"></div>
+        <div class="snowflake"></div>
+        <div class="snowflake"></div>
+        <div class="snowflake"></div>
+        <div class="snowflake"></div>
+        <div class="snowflake"></div>
+        <div class="snowflake"></div>
+        <div class="snowflake"></div>
+        <div class="snowflake"></div>
+        <div class="snowflake"></div>
+        <div class="snowflake"></div>
+        <div class="snowflake"></div>
+        <div class="snowflake"></div>
+        <div class="snowflake"></div>
+        <div class="snowflake"></div>
+        <div class="snowflake"></div>
+        <div class="snowflake"></div>
+        <div class="snowflake"></div>
+        <div class="snowflake"></div>
+        <div class="snowflake"></div>
+        <div class="snowflake"></div>
+        <div class="snowflake"></div>
+        <div class="snowflake"></div>
+        <div class="snowflake"></div>
+        <div class="snowflake"></div>
+        <div class="snowflake"></div>
+        <div class="snowflake"></div>
+        <div class="snowflake"></div>
+        <div class="snowflake"></div>
+        <div class="snowflake"></div>
+        <div class="snowflake"></div>
+        <div class="snowflake"></div>
+        <div class="snowflake"></div>
+        <div class="snowflake"></div>
+        <div class="snowflake"></div>
+        <div class="snowflake"></div>
+        <div class="snowflake"></div>
+        <div class="snowflake"></div>
+        <div class="snowflake"></div>
+        <div class="snowflake"></div>
+        <div class="snowflake"></div>
+        <div class="snowflake"></div>
+        <div class="snowflake"></div>
+        <div class="snowflake"></div>
+        <div class="snowflake"></div>
+        <div class="snowflake"></div>
+        <div class="snowflake"></div>
+        <div class="snowflake"></div>
+        <div class="snowflake"></div>
+        <div class="snowflake"></div>
+        <div class="snowflake"></div>
+    </div>
     <div class="container">
-        <!-- Szary tekst z informacjami -->
         <h2 class="gray-text">Size: X MB | Uploaded: YYYY-MM-DD</h2>
         <h1>AlfaSploit 1.1v</h1>
         <div class="info">
