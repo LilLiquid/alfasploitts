@@ -12,45 +12,54 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background: rgba(255, 255, 255, 0.39);
+            background: rgba(255, 255, 255, 0.39); /* RGBA for white with 100 alpha */
             color: #000;
             font-family: Arial, sans-serif;
             overflow: hidden;
-            position: relative;
+            position: relative; /* For positioning the top buttons */
         }
 
-        /* Tło z obrazkami */
-        #falling-images-container {
+        .background-container {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
+            pointer-events: none;
             overflow: hidden;
-            z-index: -1;
+            z-index: -1; /* Behind everything else */
         }
 
         .falling-image {
             position: absolute;
-            top: -100px;
-            width: 50px;
+            width: 50px; /* Size of the falling images */
             height: auto;
-            animation: fall 10s linear infinite;
-            opacity: 0.8;
+            animation: fall 10s linear infinite, sway 3s ease-in-out infinite;
+            opacity: 0.7;
         }
 
         @keyframes fall {
             0% {
-                transform: translateY(0);
+                top: -10%;
+                opacity: 0.5;
             }
             100% {
-                transform: translateY(100vh);
+                top: 110%;
+                opacity: 0.2;
+            }
+        }
+
+        @keyframes sway {
+            0%, 100% {
+                transform: translateX(0);
+            }
+            50% {
+                transform: translateX(20px);
             }
         }
 
         .container {
             text-align: center;
-            z-index: 1;
         }
 
         h1 {
@@ -108,13 +117,62 @@
             }
         }
 
-        /* Stylizacja przycisków w prawym górnym rogu */
+        .animate-text {
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .btn-container {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .logo {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            width: 50px;  /* Adjust the width to make it smaller */
+            height: auto; /* Maintain aspect ratio */
+        }
+
+        .btn img {
+            width: 25px; /* Adjust the size of the icons */
+            margin-right: 10px; /* Space between icon and text */
+        }
+
+        /* Status styling */
+        .status {
+            font-size: 1.5rem;
+            margin-top: 20px;
+            font-weight: bold;
+            animation: fadeIn 3s ease-in-out;
+        }
+
+        .status.down {
+            color: red;  /* Red color for Down status */
+        }
+
+        .status.working {
+            color: green;  /* Green color for Working status */
+        }
+
+        /* Positioning the buttons in the top-right corner, side by side */
         .top-buttons {
             position: absolute;
             top: 10px;
             right: 10px;
             display: flex;
-            gap: 15px;
+            gap: 15px; /* Space between the buttons */
         }
 
         .top-buttons a {
@@ -133,32 +191,43 @@
             transform: scale(1.1);
         }
 
-        .logo {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            width: 50px;
-            height: auto;
-        }
     </style>
 </head>
 <body>
-    <!-- Tło z obrazkami -->
-    <div id="falling-images-container"></div>
+    <!-- Falling background images -->
+    <div class="background-container">
+        <!-- Generate 20 falling images dynamically -->
+        <script>
+            const container = document.querySelector('.background-container');
+            const imageUrl = "https://media.discordapp.net/attachments/1317943491820519476/1324488986441289778/png-clipart-candy-cane-ribbon-candy-taffy-cartoon-s-of-candy-food-cartoon-removebg-preview.png?ex=677855fe&is=6777047e&hm=7abc312322d506d8dcca9e6d106366b66a9a79e434853a43a75b3889a6161bd1&=&format=webp&quality=lossless&width=662&height=588";
 
-    <!-- Przycisk w prawym górnym rogu -->
+            for (let i = 0; i < 20; i++) {
+                const img = document.createElement('img');
+                img.src = imageUrl;
+                img.classList.add('falling-image');
+                img.style.left = Math.random() * 100 + 'vw';
+                img.style.animationDelay = Math.random() * 10 + 's';
+                img.style.animationDuration = 5 + Math.random() * 5 + 's';
+                container.appendChild(img);
+            }
+        </script>
+    </div>
+
+    <!-- Top-right buttons (Discord and YouTube) -->
     <div class="top-buttons">
+        <!-- Discord Button -->
         <a href="https://discord.com" class="btn">
-            <img src="https://cdn.discordapp.com/attachments/1317943491820519476/1324440257411809421/discord-white-icon.webp" alt="Discord Logo">
+            <img src="https://cdn.discordapp.com/attachments/1317943491820519476/1324440257411809421/discord-white-icon.webp?ex=6778289c&is=6776d71c&hm=9b0f9ae7a9bc49f20a2bd47a91d51b8d98020cc89faecfbb29a2610093071114&" alt="Discord Logo">
             Discord
         </a>
+        <!-- YouTube Button -->
         <a href="https://youtube.com" class="btn">
-            <img src="https://media.discordapp.net/attachments/1317943491820519476/1324454279469076572/youtube-app-white-icon.webp" alt="YouTube Logo">
+            <img src="https://media.discordapp.net/attachments/1317943491820519476/1324454279469076572/youtube-app-white-icon.webp?ex=677835ab&is=6776e42b&hm=d397b7d126b7f2af4ef2b122c837cfc117e975797ccdc2c71057ffd0d37be999&=&format=webp&width=640&height=640" alt="YouTube Logo">
             YouTube
         </a>
     </div>
 
-    <img src="https://cdn.discordapp.com/attachments/1317943491820519476/1324441171724075069/freepik__modern-style-detailled-illustration-a-young-white-__51602.jpeg" alt="Logo" class="logo">
+    <img src="https://cdn.discordapp.com/attachments/1317943491820519476/1324441171724075069/freepik__modern-style-detailled-illustration-a-young-white-__51602.jpeg?ex=67782976&is=6776d7f6&hm=916a41dd8aeafd2668d0a15d83ea6aa99ca02f3b2c0ea8a2e1a9b0513098f47c&" alt="Logo" class="logo">
     <div class="container">
         <h1 class="animate-text">Alfasploit</h1>
         <ul>
@@ -166,45 +235,24 @@
             <li>Always working! auto updates</li>
             <li>Enhanced security and performance</li>
         </ul>
+        <!-- Status messages -->
         <div class="status down">
-            Status: Down :(( 
+            Status: Down :(( <!-- Red color indicating down status -->
+        </div>
+        <div class="status working">
+
         </div>
         <div class="btn-container">
             <a href="https://discord.com" class="btn">
-                <img src="https://cdn.discordapp.com/attachments/1317943491820519476/1324440257411809421/discord-white-icon.webp" alt="Discord Logo">
+                <img src="https://cdn.discordapp.com/attachments/1317943491820519476/1324440257411809421/discord-white-icon.webp?ex=6778289c&is=6776d71c&hm=9b0f9ae7a9bc49f20a2bd47a91d51b8d98020cc89faecfbb29a2610093071114&" alt="Discord Logo">
                 Join on Discord
             </a>
             <a href="https://alfasploit.netlify.app/download" class="btn">
-                <img src="https://cdn.discordapp.com/attachments/1317943491820519476/1324440548102111353/download_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24_1.png" alt="Download Icon">
+                <img src="https://cdn.discordapp.com/attachments/1317943491820519476/1324440548102111353/download_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24_1.png?ex=677828e1&is=6776d761&hm=b5f5dfbcce74447129adf7df4096acc3376899494d697ea3c6d6b09924a60f9f&" alt="Download Icon">
                 Download
             </a>
         </div>
-        <div class="footer">Are you bored of playing fair? Install Alfasploit!</div>
+        <div class="footer">Are you bored of playing fair? install alfasploit!.</div>
     </div>
-
-    <script>
-        function generateFallingImages(num) {
-            const container = document.getElementById('falling-images-container');
-            const imageUrl = "https://media.discordapp.net/attachments/1317943491820519476/1324488986441289778/png-clipart-candy-cane-ribbon-candy-taffy-cartoon-s-of-candy-food-cartoon-removebg-preview.png";
-
-            for (let i = 0; i < num; i++) {
-                const img = document.createElement('img');
-                img.src = imageUrl;
-                img.classList.add('falling-image');
-
-                const randomLeft = Math.random() * 100;
-                const randomDuration = Math.random() * (15 - 8) + 8;
-                const randomDelay = Math.random() * 10;
-
-                img.style.left = `${randomLeft}%`;
-                img.style.animationDuration = `${randomDuration}s`;
-                img.style.animationDelay = `${randomDelay}s`;
-
-                container.appendChild(img);
-            }
-        }
-
-        generateFallingImages(50);
-    </script>
 </body>
 </html>
