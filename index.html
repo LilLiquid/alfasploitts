@@ -125,6 +125,38 @@
         .status.working {
             color: green;  /* Green color for Working status */
         }
+
+        .form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .form input {
+            padding: 10px;
+            width: 300px;
+            font-size: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .form button {
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            color: #fff;
+            background-color: #000;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .form button:hover {
+            transform: scale(1.1);
+        }
+
     </style>
 </head>
 <body>
@@ -136,23 +168,21 @@
             <li>Always working! auto updates</li>
             <li>Enhanced security and performance</li>
         </ul>
-        <!-- Status messages -->
         <div class="status down">
-            Status: Down :(( <!-- Red color indicating down status -->
-        </div>
-        <div class="status working">
-
+            Status: Down :((
         </div>
         <div class="btn-container">
             <a href="https://discord.com" class="btn">
                 <img src="https://cdn.discordapp.com/attachments/1317943491820519476/1324440257411809421/discord-white-icon.webp?ex=6778289c&is=6776d71c&hm=9b0f9ae7a9bc49f20a2bd47a91d51b8d98020cc89faecfbb29a2610093071114&" alt="Discord Logo">
                 Join on Discord
             </a>
-            <a href="https://example.com/download" class="btn">
-                <img src="https://cdn.discordapp.com/attachments/1317943491820519476/1324440548102111353/download_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24_1.png?ex=677828e1&is=6776d761&hm=b5f5dfbcce74447129adf7df4096acc3376899494d697ea3c6d6b09924a60f9f&" alt="Download Icon">
-                Download
-            </a>
         </div>
+        <form class="form">
+            <input type="text" placeholder="Version" required>
+            <input type="text" placeholder="UNC" required>
+            <input type="text" placeholder="API Key" required>
+            <button type="submit">Download</button>
+        </form>
         <div class="footer">Are you bored of playing fair? install alfasploit!.</div>
     </div>
 </body>
