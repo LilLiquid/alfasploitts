@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preview Page</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: rgba(255, 255, 255, 0.39);
+            color: #000;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .background-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: -1;
+        }
+
+        .falling-image {
+            position: absolute;
+            width: 50px;
+            height: auto;
+            animation: fall 10s linear infinite, sway 3s ease-in-out infinite;
+            opacity: 0.7;
+        }
+
+        @keyframes fall {
+            0% {
+                top: -10%;
+                opacity: 0.5;
+            }
+            100% {
+                top: 110%;
+                opacity: 0.2;
+            }
+        }
+
+        @keyframes sway {
+            0%, 100% {
+                transform: translateX(0);
+            }
+            50% {
+                transform: translateX(20px);
+            }
+        }
+
+        .content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            z-index: 1;
+        }
+
+        .image-container {
+            width: 150px;
+            height: 150px;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .back-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #000;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 1.2rem;
+            text-decoration: none;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .back-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .logo {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            width: 50px;
+            height: auto;
+            z-index: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="background-container">
+        <script>
+            const container = document.querySelector('.background-container');
+            const imageUrl = "https://media.discordapp.net/attachments/1317943491820519476/1324488986441289778/png-clipart-candy-cane-ribbon-candy-taffy-cartoon-s-of-candy-food-cartoon-removebg-preview.png?ex=677855fe&is=6777047e&hm=7abc312322d506d8dcca9e6d106366b66a9a79e434853a43a75b3889a6161bd1&=&format=webp&quality=lossless&width=662&height=588";
+
+            for (let i = 0; i < 50; i++) {
+                const img = document.createElement('img');
+                img.src = imageUrl;
+                img.classList.add('falling-image');
+                img.style.left = Math.random() * 100 + 'vw';
+                img.style.animationDelay = Math.random() * 10 + 's';
+                img.style.animationDuration = 5 + Math.random() * 5 + 's';
+                container.appendChild(img);
+            }
+        </script>
+    </div>
+    <a href="https://alfasploit.netlify.app/download" class="back-btn">Back</a>
+    <img src="https://cdn.discordapp.com/attachments/1317943491820519476/1324441171724075069/freepik__modern-style-detailled-illustration-a-young-white-__51602.jpeg?ex=67782976&is=6776d7f6&hm=916a41dd8aeafd2668d0a15d83ea6aa99ca02f3b2c0ea8a2e1a9b0513098f47c&" alt="Logo" class="logo">
+    <div class="content">
+        <div class="image-container">
+            <img src="https://via.placeholder.com/150" alt="Preview Image 1">
+        </div>
+        <div class="image-container">
+            <img src="https://via.placeholder.com/150" alt="Preview Image 2">
+        </div>
+        <div class="image-container">
+            <img src="https://via.placeholder.com/150" alt="Preview Image 3">
+        </div>
+        <div class="image-container">
+            <img src="https://via.placeholder.com/150" alt="Preview Image 4">
+        </div>
+    </div>
+</body>
+</html>
